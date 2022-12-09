@@ -1,0 +1,32 @@
+{
+  "name": "puhelinluettelob",
+  "version": "1.0.0",
+  "description": "node-versio",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "forrest": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rmdir /s build && cd ../puhelinluetteloF/ && npm run build && cd .. && copy puhelinluetteloF/build/ puhelinluetteloB/build/",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "Jan Keronen",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "json-sizeof": "^1.5.0",
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0",
+    "typescript": "^4.8.4"
+  }
+}
