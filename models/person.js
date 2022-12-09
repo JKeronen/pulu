@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 const url = process.env.MONGODB_URI
-//salasanan kirjoitus käsin
-const password = process.argv[2]
+
 
 mongoose.set('strictQuery', false);
+// mongoose 7 aiheutta ilmoituksen, jos tätä asetusta ei tee
+
 
 console.log('connecting to', url)
 mongoose.connect(url, {serverSelectionTimeoutMS: 1000 * 60})

@@ -76,12 +76,14 @@ app.post
       name: person.name,
       number: person.number,
     })
-    pers.save().then(savedPerson => {
+    if(person.name >2) {
+      pers.save().then(savedPerson => {
 
-      //mongoose.connection.close()
-      response.json(savedPerson)
-    })
+        //mongoose.connection.close()
+        response.json(savedPerson)
+      })
     .catch(error => next(error))
+    }
 })
 
 
