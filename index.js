@@ -15,11 +15,12 @@ const requestLogger = (request, response, next) => {
 
 
 // MIDDLEWARET, järjestyksellä on merkitystä
-app.use(express.static('build'))
-// staattisen toiminnon osoitus (frontti backissa)
 app.use(express.json())
 app.use(requestLogger) 
 // pyyntöjen tulostus terminal-ikkunaan
+app.use(express.static('build'))
+// staattisen toiminnon osoitus (frontti backissa)
+
 
 
 
@@ -76,14 +77,11 @@ app.post
       name: person.name,
       number: person.number,
     })
-    if(person.name >2) {
-      pers.save().then(savedPerson => {
-
-        //mongoose.connection.close()
-        response.json(savedPerson)
-      })
-    .catch(error => next(error))
-    }
+      
+    pers.save().then(savedPerson => {
+      response.json(savedPerson)
+    })
+    .catch(error => next(error)) 
 })
 
 
@@ -101,7 +99,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 
 
 const unknownEndpoint = (request, response) => {
-  mongoose.connection.close()
+  //mongoose.connection.close()
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
